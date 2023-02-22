@@ -5,9 +5,8 @@
 # --------------------------------------------------------------
 # This tool  has all the features you need to add attributes  to
 # your already existing Ctrls. This script provides you with the
-# option of  choosing preset  attributes according to your  need
-# It is very simple and easy to use. All options that don't work
-# together are already disabled. 
+# option of choosing  preset  attributes according to your  need.
+# All options that don't work together are already disabled. 
 # ---------------------------------------------------------------
 # To run this  script, just  paste this file in your Maya Scripts
 # Directory, open the Scrit Editor and paste the following bit of
@@ -565,14 +564,18 @@ def Add_Space_Attr(ss_attr_01,ss_attr_02,ss_attr_03,ss_attr_04):
 	if cmds.checkBox(ss_attr_04, query=True, value=True):
 		Boolean_list.append('Head')
 	print str(Boolean_list)
-	
+	var = ""
+	for item in Boolean_list:
+		var = var + item 
+		
 	for obj in ss_list:
 		cmds.select(cl=True)
 		cmds.select(ss_list[i])
 		print 'working on: ', ss_list[i]
-		cmds.addAttr(ln= 'Space', at= 'enum', en= str(Boolean_list) , k=1)
+		cmds.addAttr(ln= 'Space', at= 'enum', en= var , k=1)
 		i+=1
-	
+		
+		
 #----------------------------------------------------------
 def sel_trans_all(trans_X,trans_Y,trans_Z, state, *args):
 	if state:
